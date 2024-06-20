@@ -1,11 +1,20 @@
 "use client"
 import React from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import axios from 'axios'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
+import { Error } from 'mongoose'
 
 
 export default function SignupPage() {
+
+
+
+    const router = useRouter();
+  
+
+  
 
     const [user, setUser] = React.useState({
         username: '',
@@ -14,6 +23,23 @@ export default function SignupPage() {
     })
 
     const onSignup = async () => {
+
+        
+        try {
+            const response = await axios.post('/api/users/signup', user)
+            console.log(response)
+            toast.success(response.data.message)
+            
+            router.push("/login")
+           
+
+            
+        } catch (error:any) {
+            console.log(error)
+            toast.error(Error.Messages)
+            
+        }
+
     }
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

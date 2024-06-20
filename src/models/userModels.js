@@ -16,11 +16,7 @@ const userSchema = new  mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
     },
-    isVerified : {
-        type: Boolean,
-        default: false,
-        unique: true,
-    },
+  
     isAdmin : {
         type: Boolean,
         default: false,
