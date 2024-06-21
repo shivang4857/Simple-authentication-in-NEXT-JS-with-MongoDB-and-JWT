@@ -15,13 +15,11 @@ export default function SignupPage() {
   
 
   
-
     const [user, setUser] = React.useState({
-        username: '',
-        password: '',
-        email: ''
+        email: "",
+        password: "",
+        username: "",
     })
-
     const onSignup = async () => {
 
         
