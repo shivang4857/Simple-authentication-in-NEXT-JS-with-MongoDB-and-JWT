@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 
 
 
-
+await connectToDatabase() 
 
 
 
@@ -13,13 +13,13 @@ import bcryptjs from "bcryptjs";
 
 export async function POST(request: NextRequest){
     try {
-      await connectToDatabase() 
+      
         const reqBody = await request.json()
         const {username, email, password} = reqBody
 
         console.log(reqBody);
 
-        //check if user already exists
+       // check if user already exists
         const user = await User.findOne({email})
 
         if(user){
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest){
 
 
     } catch (error: any) {
-        return NextResponse.json({error: error.message}, {status: 500})
+        return NextResponse.json({error: error.message} , {status: 500})
 
     }
 }
